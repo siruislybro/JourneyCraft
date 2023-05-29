@@ -28,25 +28,27 @@ function Login() {
     <Layout>
       <div>
         <h2>Login</h2>
-        <form>
-          <div>
+        <form className='flex flex-col justify-center items-center'>
+          <div className='my-2'>
             <label>Email:</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className='border border-black mx-2'
             />
           </div>
-          <div>
+          <div className='my-2'>
             <label>Password:</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className='border border-black mx-2'
             />
           </div>
           <div>
-            <button type="button" onClick={handleLogin}>
+            <button type="button" onClick={handleLogin} className="hover:border-2 hover:border-white px-5 h-full w-full flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200">
               Login
             </button>
           </div>

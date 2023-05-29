@@ -22,25 +22,27 @@ function Register() {
     <Layout>
     <div>
       <h2>Registration</h2>
-      <form>
-        <div>
+      <form className='flex justify-center items-center flex-col'>
+        <div className='my-2'>
           <label>Email:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className='border border-black mx-2'
           />
         </div>
-        <div>
+        <div className='my-2'>
           <label>Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className='border border-black mx-2'
           />
         </div>
         <div>
-          <button type="button" onClick={handleRegistration}>
+          <button type="button" onClick={handleRegistration} className="hover:border-2 hover:border-white px-5 h-full w-full flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200">
             Register
           </button>
         </div>
