@@ -8,19 +8,20 @@ const GeneratePage = () => {
   const [location, setLocation] = useState('');
   const [budget, setBudget] = useState('');
   const [duration, setDuration] = useState('');
+  const [interest, setInterest] = useState('');
   const [generatedItinerary, setGeneratedItinerary] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     // Perform logic for generating the itinerary based on location, budget, and duration
     // You can make API calls, calculations, or any other necessary operations here
     // Once the itinerary is generated, set it to the state
-    const generatedItinerary = await generateItinerary(location, budget, duration);
+    const generatedItinerary = await generateItinerary(location, budget, duration, interest);
     setGeneratedItinerary(generatedItinerary);
   };
 
-  const generateItinerary = async (location, budget, duration) => {
+  const generateItinerary = async (location: string, budget: string, duration: string, interest: string) => {
     // Call your backend API or service to generate the itinerary
     // You can pass the user inputs (location, budget, duration) to the API
     const response = await fetch('/api/itinerary', {
@@ -28,7 +29,7 @@ const GeneratePage = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ location, budget, duration }),
+      body: JSON.stringify({ location, budget, duration, interest }),
     });
 
     if (response.ok) {
@@ -55,6 +56,10 @@ const GeneratePage = () => {
           <label>
             Duration:
             <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
+          </label>
+          <label>
+            Duration:
+            <input type="text" value={interest} onChange={(e) => setInterest(e.target.value)} />
           </label>
           <button type="submit">Generate</button>
         </form>
