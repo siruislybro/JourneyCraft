@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
       <h1>Welcome to JourneyCraft</h1>
       <p>Experience personalized travel itineraries for the post-pandemic era.</p>
       <button>Get Started</button>
-      <Link href="/profile">profile</Link>
+      <Link href="/login">login</Link>
     </div>
   );
 };
