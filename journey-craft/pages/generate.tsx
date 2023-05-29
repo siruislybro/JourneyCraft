@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Chat from '../components/Chat';
+import Layout from '@/components/layout';
 
 const GeneratePage = () => {
   const [location, setLocation] = useState('');
@@ -39,26 +40,28 @@ const GeneratePage = () => {
   };
 
   return (
-    <div>
-      <h1>Generate Itinerary</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Location:
-          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
-        </label>
-        <label>
-          Budget:
-          <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
-        </label>
-        <label>
-          Duration:
-          <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
-        </label>
-        <button type="submit">Generate</button>
-      </form>
+    <Layout>
+      <div>
+        <h1>Generate Itinerary</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Location:
+            <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+          </label>
+          <label>
+            Budget:
+            <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
+          </label>
+          <label>
+            Duration:
+            <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
+          </label>
+          <button type="submit">Generate</button>
+        </form>
 
-      {generatedItinerary && <Chat itinerary={generatedItinerary} />}
-    </div>
+        {generatedItinerary && <Chat itinerary={generatedItinerary} />}
+      </div>
+    </Layout>
   );
 };
 
