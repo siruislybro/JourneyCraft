@@ -58,7 +58,7 @@ const GeneratePage = () => {
             <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
           </label>
           <label>
-            Duration:
+            Interests:
             <input type="text" value={interest} onChange={(e) => setInterest(e.target.value)} />
           </label>
           <button type="submit">Generate</button>
