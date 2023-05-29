@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '../firebase';
 import Layout from '@/components/layout';
 
@@ -14,9 +15,9 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       // User successfully logged in
-      window.location.href="/";
+      window.location.href="/plan";
       setIsLoggedIn(true);
     } catch (error) {
       setError(error.message);

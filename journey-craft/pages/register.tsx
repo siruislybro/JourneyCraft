@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createUserWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '../firebase';
 import Layout from '@/components/layout';
 
@@ -9,7 +10,7 @@ function Register() {
 
   const handleRegistration = async () => {
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       // User registration successful
       window.location.href="/";
     } catch (error) {
