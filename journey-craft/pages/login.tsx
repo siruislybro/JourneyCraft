@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '../firebase';
 import Layout from '@/components/layout';
+import Image from 'next/image';
+import ImageLogo from '../assets/LightningEagle.jpg';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -27,6 +29,9 @@ function Login() {
   return (
     <Layout>
       <div>
+        <div className='flex flex-col justify-center items-center'>
+          <Image src={ImageLogo} alt={'Journey Craft'} width={80} height={80}/>
+        </div>
         <h2 className='text-4xl text-center mb-5'>Login</h2>
         <form className='flex flex-col justify-center items-center'>
           <div className='my-2'>

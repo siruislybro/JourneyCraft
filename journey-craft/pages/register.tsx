@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '../firebase';
 import Layout from '@/components/layout';
+import Image from 'next/image';
+import ImageLogo from '../assets/LightningEagle.jpg';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -21,6 +23,9 @@ function Register() {
   return (
     <Layout>
     <div>
+      <div className='flex flex-col justify-center items-center'>
+        <Image src={ImageLogo} alt={'Journey Craft'} width={80} height={80}/>
+      </div>
       <h2 className='text-4xl text-center mb-5'>Register</h2>
       <form className='flex justify-center items-center flex-col'>
         <div className='my-2'>
