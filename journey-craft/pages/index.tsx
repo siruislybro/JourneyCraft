@@ -8,14 +8,19 @@ import Layout from '@/components/layout';
 const HomePage: React.FC = () => {
   return (
     <Layout>
-    <div>
-      <h1>Welcome to JourneyCraft</h1>
-      <p>Experience personalized travel itineraries for the post-pandemic era.</p>
-      <Link href = "/plan">
-        <button>Get Started</button>
+      <div>
+        <h1>Welcome to JourneyCraft</h1>
+        <p>Experience personalized travel itineraries for the post-pandemic era.</p>
+        <Link href = "/plan">
+          <button>Get Started</button>
+        </Link>
+        <Link href="/login">login</Link>
+      </div>
+      <br></br>
+      <Link href = "/generate">
+          <button>Sirui</button>
       </Link>
-      <Link href="/login">login</Link>
-    </div>
+
     </Layout>
   );
 };

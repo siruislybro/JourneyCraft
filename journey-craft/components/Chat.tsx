@@ -1,5 +1,12 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import { OpenAIAPI } from '@openai/api';
+import { Configuration, OpenAIApi, CreateCompletionRequest } from 'openai';
+
+const configuration = new Configuration({
+  organization: 'ORG_ID',
+  apiKey: 'OPENAI_API_KEY',
+});
+
+const openai = new OpenAIApi(configuration);
 
 interface Message {
   role: string;
@@ -31,13 +38,31 @@ const Chat: React.FC<ChatProps> = ({ itinerary }) => {
     setMessages((prevMessages) => [...prevMessages, { role: 'user', content: userInput.trim() }]);
     setUserInput('');
 
-    // Send the user message to the ChatGPT API for processing
-    const response = await OpenAIAPI.sendMessage(userInput);
-    // Extract the bot's response from the API response
-    const botMessage = response.data.message;
+    try {
+      // Send the user message to the OpenAI API for processing
+      const requestPayload: CreateCompletionRequest = {
+        model: 'davinci',
+        prompt: messages.map((message) => `${message.role}: ${message.content}\n`).join(''),
+        max_tokens: 50,
+        temperature: 0.7,
+        n: 1,
+        stop: '\n',
+      };
 
-    // Add the bot's response to the chat conversation
-    setMessages((prevMessages) => [...prevMessages, { role: 'bot', content: botMessage }]);
+      const response = await openai.createCompletion(requestPayload);
+
+      // Extract the bot's response from the API response
+      const botMessage = response.data.choices[0].text;
+
+      // Add the bot's response to the chat conversation
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { role: 'bot', content: botMessage || 'No response from the bot' },
+      ]);
+    } catch (error) {
+      // Handle any errors from the OpenAI API
+      console.error('Error in OpenAI API request:', error);
+    }
   };
 
   return (

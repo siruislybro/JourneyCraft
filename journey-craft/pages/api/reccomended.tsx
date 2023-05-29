@@ -1,10 +1,11 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
-export default async (req, res) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    const { destination, startDate, endDate, interests, vicinity } = req.body;
+    const { destination, travel_duration, interests, vicinity } = req.body;
 
-    const prompt = `You are a master at curating itineraries for tourists visiting "${destination}", here is the start date "${startDate}", and this is the end date "${endDate}". Here are some of my interests "${interests}". I will be living in this vicinity "${vicinity}".`;
+    const prompt = `You are a master at curating itineraries for tourists visiting "${destination}", I will be staying for "${travel_duration}". Here are some of my interests "${interests}". I will be living in this vicinity "${vicinity}".`;
 
     try {
       const response = await axios.post(
@@ -27,3 +28,5 @@ export default async (req, res) => {
     res.status(405).json({ error: 'Invalid request method' });
   }
 };
+
+export default handler;
