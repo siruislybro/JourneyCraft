@@ -1,10 +1,17 @@
-// components/Chat.js
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { OpenAIAPI } from '@openai/api';
 
-import React, { useState, useEffect } from 'react';
-import { OpenAIAPI } from 'your-openai-api-library';
+interface Message {
+  role: string;
+  content: string;
+}
 
-const Chat = ({ itinerary }) => {
-  const [messages, setMessages] = useState([]);
+interface ChatProps {
+  itinerary: any; // Replace 'any' with the appropriate type for the itinerary
+}
+
+const Chat: React.FC<ChatProps> = ({ itinerary }) => {
+  const [messages, setMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState('');
 
   useEffect(() => {
@@ -12,11 +19,11 @@ const Chat = ({ itinerary }) => {
     setMessages([{ role: 'system', content: 'Welcome to JourneyCraft! How can I assist you?' }]);
   }, []);
 
-  const handleUserInput = (e) => {
+  const handleUserInput = (e: ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
   };
 
-  const handleSendMessage = async (e) => {
+  const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (userInput.trim() === '') return;
 
