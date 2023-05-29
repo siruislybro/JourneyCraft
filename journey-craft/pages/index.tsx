@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
         <Link href="/login">login</Link>
       </div>
       <br></br>
-      <Link href = "/components\Chat.tsx">
+      <Link href = "/components/Chat">
           <button>Sirui</button>
       </Link>
 
