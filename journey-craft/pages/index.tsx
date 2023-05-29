@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
         <Link className="text-lg" href = "/plan">
           <button className="border border-2 hover:border-white px-5 h-full w-full flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200">Get Started</button>
         </Link>
-        <Link className="border border-2 text-lg w-auto hover:border-white px-5 h-full w-full flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200" href="/login">Login</Link>
+        <Link className="border border-2 text-lg w-auto hover:border-white px-5 h-full w-auto flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200" href="/login">Login</Link>
 
       <br></br>
       <Link href = "/generate">
