@@ -4,7 +4,7 @@ import Layout from '@/components/layout';
 
 const ItineraryForm: React.FC = () => {
   const [destination, setDestination] = useState<string>('');
-  const [travel_duration, setStartDate] = useState<string>('');
+  const [travel_duration, setTravelDuration] = useState<string>('');
   const [interests, setInterests] = useState<string>('');
   const [vicinity, setVicinity] = useState<string>('');
   const [recommendations, setRecommendations] = useState<string>('');
@@ -30,31 +30,30 @@ const ItineraryForm: React.FC = () => {
     <Layout>
       <form onSubmit={handleSubmit}>
         {/* Form fields for destination, startDate, endDate, interests, vicinity */}
-        <div>
-          <label>Destination:</label>
-          <input type="text" value={destination} onChange={(e: ChangeEvent<HTMLInputElement>) => setDestination(e.target.value)} />
-        </div>
-        <div>
-          <label>Travel Duration:</label>
-          <input type="text" value={travel_duration} onChange={(e: ChangeEvent<HTMLInputElement>) => setDestination(e.target.value)} />
-        </div>
-        <div>
-          <label>Interests:</label>
-          <input type="text" value={interests} onChange={(e: ChangeEvent<HTMLInputElement>) => setDestination(e.target.value)} />
-        </div>
-        <div>
-          <label>Accomodation Vicinity:</label>
-          <input type="text" value={vicinity} onChange={(e: ChangeEvent<HTMLInputElement>) => setDestination(e.target.value)} />
-        </div>
-        <button type="submit">Generate Plan</button>
-
-        {recommendations && (
           <div>
-            <h2>Recommended Activities:</h2>
-            <p>{recommendations}</p>
+            <label>Destination:</label>
+              <input type="text" value={destination} onChange={(e: ChangeEvent<HTMLInputElement>) => setDestination(e.target.value)} />
           </div>
-        )}
-      </form>
+          <div>
+            <label>Travel Duration:</label>
+              <input type="text" value={travel_duration} onChange={(e: ChangeEvent<HTMLInputElement>) => setTravelDuration(e.target.value)} />
+          </div>
+          <div>
+            <label>Interests:</label>
+              <input type="text" value={interests} onChange={(e: ChangeEvent<HTMLInputElement>) => setInterests(e.target.value)} />
+          </div>
+          <div>
+            <label>Accomodation Vicinity:</label>
+              <input type="text" value={vicinity} onChange={(e: ChangeEvent<HTMLInputElement>) => setVicinity(e.target.value)} />
+           </div>
+        <button type="submit">Generate Plan</button>
+            {recommendations && (
+              <div>
+                <h2>Recommended Activities:</h2>
+                <p>{recommendations}</p>
+              </div>
+            )}
+          </form>
     </Layout>
   );
 };
