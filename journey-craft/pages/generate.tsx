@@ -1,6 +1,6 @@
 // pages/generate.js
 
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import Chat from '../components/Chat';
 import Layout from '@/components/layout';
 
@@ -11,7 +11,7 @@ const GeneratePage = () => {
   const [interest, setInterest] = useState('');
   const [generatedItinerary, setGeneratedItinerary] = useState(null);
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e : { preventDefault: () => void; }) => {
     e.preventDefault();
 
     // Perform logic for generating the itinerary based on location, budget, and duration
@@ -44,24 +44,24 @@ const GeneratePage = () => {
     <Layout>
       <div>
         <h1>Generate Itinerary</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center'>
           <label>
-            Location/Destination:
-            <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+            Location:
+            <input className="my-2 border border-black ml-2" type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
           </label>
           <label>
             Budget:
-            <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
+            <input className="my-2 border border-black ml-2"type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
           </label>
           <label>
-            Duration of Stay:
-            <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
+            Duration:
+            <input className="my-2 border border-black ml-2"type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
           </label>
           <label>
-            Interests:
-            <input type="text" value={interest} onChange={(e) => setInterest(e.target.value)} />
+            Interest:
+            <input className="my-2 border border-black ml-2"type="text" value={interest} onChange={(e) => setInterest(e.target.value)} />
           </label>
-          <button type="submit">Generate</button>
+          <button className="border border-2 hover:border-white px-5 h-full w-auto flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200" type="submit">Generate</button>
         </form>
 
         {generatedItinerary && <Chat itinerary={generatedItinerary} />}
