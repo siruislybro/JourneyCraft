@@ -46,7 +46,7 @@ const GeneratePage = () => {
         <h1>Generate Itinerary</h1>
         <form onSubmit={handleSubmit}>
           <label>
-            Location:
+            Location/Destination:
             <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
           </label>
           <label>
@@ -54,7 +54,7 @@ const GeneratePage = () => {
             <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
           </label>
           <label>
-            Duration:
+            Duration of Stay:
             <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
           </label>
           <label>
