@@ -11,7 +11,9 @@ const HomePage: React.FC = () => {
     <div>
       <h1>Welcome to JourneyCraft</h1>
       <p>Experience personalized travel itineraries for the post-pandemic era.</p>
-      <button>Get Started</button>
+      <Link href = "plan.js">
+        <button>Get Started</button>
+      </Link>
       <Link href="/login">login</Link>
     </div>
     </Layout>
