@@ -29,10 +29,10 @@ function Navbar() {
         <Link href="/" className="flex items-center justify-center">
             <span className="hover:text-2xl self-center text-xl font-semibold whitespace-nowrap dark:text-white">Home</span>
         </Link>
-        <Link href="/about" className="flex items-center justify-center">
+        <Link href="/login" className="flex items-center justify-center">
             <span className="hover:text-2xl text-center self-center text-xl font-semibold whitespace-nowrap dark:text-white">Login</span>
         </Link>
-        <Link href="/about" className="flex items-center justify-center">
+        <Link href="/register" className="flex items-center justify-center">
             <span className="hover:text-2xl text-center self-center text-xl font-semibold whitespace-nowrap dark:text-white">Register</span>
         </Link>
       </div>
