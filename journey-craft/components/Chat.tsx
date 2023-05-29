@@ -1,12 +1,12 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Configuration, OpenAIApi, CreateCompletionRequest } from 'openai';
 
-const configuration = new Configuration({
-  organization: 'ORG_ID',
-  apiKey: 'OPENAI_API_KEY',
-});
+// const configuration = new Configuration({
+//   organization: 'ORG_ID',
+//   apiKey: 'OPENAI_API_KEY',
+// });
 
-const openai = new OpenAIApi(configuration);
+// const openai = new OpenAIApi(configuration);
 
 interface Message {
   role: string;
@@ -39,6 +39,13 @@ const Chat: React.FC<ChatProps> = ({ itinerary }) => {
     setUserInput('');
 
     try {
+      // Prepare the prompt based on the user's inputs and previous messages
+      let prompt = `You are a master at curating itineraries for tourists visiting "${itinerary.location}". `;
+      prompt += `Here is the duration of stay: "${itinerary.duration}". `;
+      prompt += `Here are some of my interests: "${itinerary.interests}". `;
+      prompt += `I will be living in this vicinity: "${itinerary.vicinity}". `;
+      prompt += `User: ${userInput}`;
+
       // Send the user message to the OpenAI API for processing
       const requestPayload: CreateCompletionRequest = {
         model: 'davinci',
