@@ -21,7 +21,7 @@ function Register() {
   return (
     <Layout>
     <div>
-      <h2>Registration</h2>
+      <h2 className='text-4xl text-center mb-5'>Register</h2>
       <form className='flex justify-center items-center flex-col'>
         <div className='my-2'>
           <label>Email:</label>
@@ -42,7 +42,7 @@ function Register() {
           />
         </div>
         <div>
-          <button type="button" onClick={handleRegistration} className="hover:border-2 hover:border-white px-5 h-full w-full flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200">
+          <button type="button" onClick={handleRegistration} className="border border-2 hover:border-white px-5 h-full w-full flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200">
             Register
           </button>
         </div>

@@ -43,7 +43,7 @@ const GeneratePage = () => {
   return (
     <Layout>
       <div>
-        <h1>Generate Itinerary</h1>
+        <h1 className='text-4xl text-center mb-5'>Generate Itinerary</h1>
         <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center'>
           <label>
             Location:
