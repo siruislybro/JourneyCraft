@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import Layout from '@/components/layout';
 
@@ -6,11 +6,18 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+  }, [isLoggedIn]);
 
   const handleLogin = async () => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
       // User successfully logged in
+      window.location.href="/";
+      setIsLoggedIn(true);
     } catch (error) {
       setError(error.message);
     }
