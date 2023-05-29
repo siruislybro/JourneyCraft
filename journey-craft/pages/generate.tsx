@@ -1,15 +1,65 @@
-// pages/index.tsx
+// pages/generate.js
 
-import React from 'react';
+import React, { useState } from 'react';
+import Chat from '../components/Chat';
 
-const HomePage: React.FC = () => {
+const GeneratePage = () => {
+  const [location, setLocation] = useState('');
+  const [budget, setBudget] = useState('');
+  const [duration, setDuration] = useState('');
+  const [generatedItinerary, setGeneratedItinerary] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Perform logic for generating the itinerary based on location, budget, and duration
+    // You can make API calls, calculations, or any other necessary operations here
+    // Once the itinerary is generated, set it to the state
+    const generatedItinerary = await generateItinerary(location, budget, duration);
+    setGeneratedItinerary(generatedItinerary);
+  };
+
+  const generateItinerary = async (location, budget, duration) => {
+    // Call your backend API or service to generate the itinerary
+    // You can pass the user inputs (location, budget, duration) to the API
+    const response = await fetch('/api/itinerary', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ location, budget, duration }),
+    });
+
+    if (response.ok) {
+      const generatedItinerary = await response.json();
+      return generatedItinerary;
+    } else {
+      throw new Error('Failed to generate itinerary');
+    }
+  };
+
   return (
     <div>
-      <h1>Welcome to JourneyCraft</h1>
-      <p>Experience personalized travel itineraries for the post-pandemic era.</p>
-      <button>Get Started</button>
+      <h1>Generate Itinerary</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Location:
+          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+        </label>
+        <label>
+          Budget:
+          <input type="text" value={budget} onChange={(e) => setBudget(e.target.value)} />
+        </label>
+        <label>
+          Duration:
+          <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
+        </label>
+        <button type="submit">Generate</button>
+      </form>
+
+      {generatedItinerary && <Chat itinerary={generatedItinerary} />}
     </div>
   );
 };
 
-export default HomePage;
+export default GeneratePage;
