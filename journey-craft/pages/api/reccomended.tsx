@@ -1,6 +1,7 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
-export default async (req, res) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const { destination, startDate, endDate, interests, vicinity } = req.body;
 
@@ -27,3 +28,5 @@ export default async (req, res) => {
     res.status(405).json({ error: 'Invalid request method' });
   }
 };
+
+export default handler;

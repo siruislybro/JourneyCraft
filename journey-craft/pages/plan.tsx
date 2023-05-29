@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 
-const ItineraryForm = () => {
-  const [destination, setDestination] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [interests, setInterests] = useState('');
-  const [vicinity, setVicinity] = useState('');
-  const [recommendations, setRecommendations] = useState('');
+const ItineraryForm: React.FC = () => {
+  const [destination, setDestination] = useState<string>('');
+  const [startDate, setStartDate] = useState<string>('');
+  const [endDate, setEndDate] = useState<string>('');
+  const [interests, setInterests] = useState<string>('');
+  const [vicinity, setVicinity] = useState<string>('');
+  const [recommendations, setRecommendations] = useState<string>('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     try {
@@ -32,7 +32,7 @@ const ItineraryForm = () => {
       {/* Form fields for destination, startDate, endDate, interests, vicinity */}
       <div>
         <label>Destination:</label>
-        <input type="text" value={destination} onChange={(e) => setDestination(e.target.value)} />
+        <input type="text" value={destination} onChange={(e: ChangeEvent<HTMLInputElement>) => setDestination(e.target.value)} />
       </div>
       {/* Repeat similar divs for other fields */}
       <button type="submit">Generate Plan</button>
