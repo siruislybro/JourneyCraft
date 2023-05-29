@@ -27,7 +27,7 @@ function Login() {
   return (
     <Layout>
       <div>
-        <h2>Login</h2>
+        <h2 className='text-4xl text-center mb-5'>Login</h2>
         <form className='flex flex-col justify-center items-center'>
           <div className='my-2'>
             <label>Email   :</label>
@@ -48,7 +48,7 @@ function Login() {
             />
           </div>
           <div>
-            <button type="button" onClick={handleLogin} className="hover:border-2 hover:border-white px-5 h-full w-full flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200">
+            <button type="button" onClick={handleLogin} className="border border-2 hover:border-white px-5 h-full w-full flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200">
               Login
             </button>
           </div>
