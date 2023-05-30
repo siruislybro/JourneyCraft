@@ -1,12 +1,12 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Configuration, OpenAIApi, CreateCompletionRequest } from 'openai';
 
-// const configuration = new Configuration({
-//   organization: 'ORG_ID',
-//   apiKey: 'OPENAI_API_KEY',
-// });
+const configuration = new Configuration({
+  organization: 'ORG_ID',
+  apiKey: 'OPENAI_API_KEY',
+});
 
-// const openai = new OpenAIApi(configuration);
+const openai = new OpenAIApi(configuration);
 
 interface Message {
   role: string;
