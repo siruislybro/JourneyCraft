@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '../firebase';
 import Layout from '@/components/layout';
@@ -21,6 +21,8 @@ function Login() {
       // User successfully logged in
       window.location.href="/plan";
       setIsLoggedIn(true);
+      const username = email.substring(0, email.indexOf("@"));
+      localStorage.setItem('username', username);
     } catch (error) {
       setError(error.message);
     }

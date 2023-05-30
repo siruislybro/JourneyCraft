@@ -6,6 +6,7 @@ function Navbar() {
 
   useEffect(() => {
     const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+    const username = localStorage.getItem('username');
     if (savedIsLoggedIn) {
       setIsLoggedIn(savedIsLoggedIn === 'true');
     }
@@ -14,6 +15,7 @@ function Navbar() {
   const handleLogout = () => {
     localStorage.setItem('isLoggedIn', 'false');
     setIsLoggedIn(false);
+    localStorage.setItem('username', '');
     // Perform any additional logout logic here, such as clearing user session or making API requests
     // Redirect the user to the desired page after logout
     window.location.href = '/';
