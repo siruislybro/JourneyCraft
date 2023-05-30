@@ -35,7 +35,7 @@ function Login() {
         <h2 className='text-4xl text-center mb-5'>Login</h2>
         <form className='flex flex-col justify-center items-center'>
           <div className='my-2'>
-            <label>Email   :</label>
+            <label>Email:</label>
             <input
               type="email"
               value={email}
