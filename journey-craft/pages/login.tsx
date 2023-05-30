@@ -19,7 +19,7 @@ function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       // User successfully logged in
-      window.location.href="/plan";
+      window.location.href="/generate";
       setIsLoggedIn(true);
       const username = email.substring(0, email.indexOf("@"));
       localStorage.setItem('username', username);
