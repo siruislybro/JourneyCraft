@@ -2,7 +2,7 @@ import Layout from '@/components/layout';
 
 import React from 'react';
 
-const HomePage: React.FC = () => {
+const ExplorePage: React.FC = () => {
   return (
     <Layout>
     <div>
@@ -14,4 +14,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default ExplorePage;

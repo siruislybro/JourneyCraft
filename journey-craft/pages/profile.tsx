@@ -1,15 +1,18 @@
 // pages/index.tsx
 
 import React from 'react';
+import Layout from '@/components/layout';
 
-const HomePage: React.FC = () => {
+const ProfilePage: React.FC = () => {
   return (
-    <div>
-      <h1>Welcome to JourneyCraft PROFILE</h1>
-      <p>Experience personalized travel itineraries for the post-pandemic era.</p>
-      <button>Get Started</button>
-    </div>
+    <Layout>
+      <div>
+        <h1>Welcome to JourneyCraft PROFILE</h1>
+        <p>Experience personalized travel itineraries for the post-pandemic era.</p>
+        <button>Get Started</button>
+      </div>
+    </Layout>
   );
 };
 
-export default HomePage;
+export default ProfilePage;
