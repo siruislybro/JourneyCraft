@@ -1,13 +1,6 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Configuration, OpenAIApi, CreateCompletionRequest } from 'openai';
 
-const configuration = new Configuration({
-  organization: 'ORG_ID',
-  apiKey: 'OPENAI_API_KEY',
-});
-
-const openai = new OpenAIApi(configuration);
-
 interface Message {
   role: string;
   content: string;
@@ -15,11 +8,19 @@ interface Message {
 
 interface ChatProps {
   itinerary: any; // Replace 'any' with the appropriate type for the itinerary
+  apiKey: string;
 }
 
-const Chat: React.FC<ChatProps> = ({ itinerary }) => {
+const Chat: React.FC<ChatProps> = ({ itinerary, apiKey }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState('');
+
+  const configuration = new Configuration({
+    organization: 'ORG_ID',
+    apiKey: apiKey,
+  });
+  
+  const openai = new OpenAIApi(configuration);
 
   useEffect(() => {
     // Initialize the chat conversation with a welcome message or any initial prompts

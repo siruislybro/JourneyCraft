@@ -9,6 +9,7 @@ const GeneratePage = () => {
   const [budget, setBudget] = useState('');
   const [duration, setDuration] = useState('');
   const [interest, setInterest] = useState('');
+  const [apiKey, setApiKey] = useState('');
   const [generatedItinerary, setGeneratedItinerary] = useState(null);
 
   const handleSubmit = async (e : { preventDefault: () => void; }) => {
@@ -62,9 +63,13 @@ const GeneratePage = () => {
             <input className="my-2 border border-black ml-2"type="text" value={interest} onChange={(e) => setInterest(e.target.value)} />
           </label>
           <button className="border border-2 hover:border-white px-5 h-full w-auto flex justify-evenly items-center hover:bg-gradient-to-r hover:from-violet-200 hover:to-emerald-200" type="submit">Generate</button>
+          <label>
+            API Key:
+            <input className="my-2 border border-black ml-2"type="text" value={apiKey} onChange={(e) => setApiKey(e.target.value)} />
+          </label>
         </form>
 
-        {generatedItinerary && <Chat itinerary={generatedItinerary} />}
+        {generatedItinerary && <Chat itinerary={generatedItinerary} apiKey={apiKey} />}
       </div>
     </Layout>
   );
