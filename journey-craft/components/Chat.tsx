@@ -40,11 +40,7 @@ const Chat: React.FC<ChatProps> = ({ itinerary, apiKey }) => {
     setUserInput('');
 
     try {
-      // Prepare the prompt based on the user's inputs and previous messages
-      let prompt = `You are a master at curating itineraries for tourists visiting "${itinerary.location}". `;
-      prompt += `Here is the duration of stay: "${itinerary.duration}". `;
-      prompt += `Here are some of my interests: "${itinerary.interests}". `;
-      prompt += `I will be living in this vicinity: "${itinerary.vicinity}". `;
+      let prompt = messages.map((message) => `${message.role}: ${message.content}\n`).join('');
       prompt += `User: ${userInput}`;
 
       // Send the user message to the OpenAI API for processing
@@ -56,11 +52,14 @@ const Chat: React.FC<ChatProps> = ({ itinerary, apiKey }) => {
         n: 1,
         stop: '\n',
       };
+      // console.log("Request Payload:", requestPayload); // Debugging line
 
       const response = await openai.createCompletion(requestPayload);
+      // console.log("API Response:", response); // Debugging line
 
       // Extract the bot's response from the API response
       const botMessage = response.data.choices[0].text;
+      // console.log("Bot Message:", botMessage); // Debugging line
 
       // Add the bot's response to the chat conversation
       setMessages((prevMessages) => [

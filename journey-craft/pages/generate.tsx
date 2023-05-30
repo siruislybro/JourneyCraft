@@ -11,15 +11,25 @@ const GeneratePage = () => {
   const [interest, setInterest] = useState('');
   const [apiKey, setApiKey] = useState('');
   const [generatedItinerary, setGeneratedItinerary] = useState(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const handleSubmit = async (e : { preventDefault: () => void; }) => {
     e.preventDefault();
 
+    setIsGenerating(true);
+
     // Perform logic for generating the itinerary based on location, budget, and duration
     // You can make API calls, calculations, or any other necessary operations here
     // Once the itinerary is generated, set it to the state
-    const generatedItinerary = await generateItinerary(location, budget, duration, interest);
-    setGeneratedItinerary(generatedItinerary);
+
+    try {
+      const generatedItinerary = await generateItinerary(location, budget, duration, interest);
+      setGeneratedItinerary(generatedItinerary);
+    } catch (e) {
+      console.error('Failed to generate itinerary:', e);
+    }
+
+    setIsGenerating(false);
   };
 
   const generateItinerary = async (location: string, budget: string, duration: string, interest: string) => {
