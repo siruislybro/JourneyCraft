@@ -37,7 +37,8 @@ const GeneratePage = () => {
       const generatedItinerary = await response.json();
       return generatedItinerary;
     } else {
-      throw new Error('Failed to generate itinerary');
+      const errorData = await response.json();
+      throw new Error(`Failed to generate itinerary: ${response.status}, ${errorData.message}`);
     }
   };
 
@@ -69,7 +70,12 @@ const GeneratePage = () => {
           </label>
         </form>
 
-        {generatedItinerary && <Chat itinerary={generatedItinerary} apiKey={apiKey} />}
+        {generatedItinerary && 
+          <>
+            <textarea readOnly value={JSON.stringify(generatedItinerary, null, 2)} className='my-2 w-full h-64 border border-black' />
+            <Chat itinerary={generatedItinerary} apiKey={apiKey} />
+        </>
+}
       </div>
     </Layout>
   );
